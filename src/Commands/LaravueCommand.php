@@ -31,7 +31,6 @@ class LaravueCommand extends Command
 
         $this->info('Publishing all files ...');
         $this->call('vendor:publish', ['--provider' => 'Fontenele\Laravue\Providers\LaravueServiceProvider', '--force' => true]);
-        $this->call('vendor:publish', ['--provider' => 'Spatie\Activitylog\ActivitylogServiceProvider', '--tag' => 'migrations']);
         if (!File::exists(base_path('.babelrc'))) {
             File::put(base_path('.babelrc'), File::get(__DIR__ . '/../../.babelrc'));
         }
