@@ -44,6 +44,9 @@ class LaravueCommand extends Command
         $this->changeFrontend();
         $this->changeRoutes();
 
+        $this->info("Dumping the composer autoload");
+        (new Process('composer dump-autoload'))->run();
+
         $this->call('db:seed', ['--class' => 'LaravueRolesTableSeeder']);
         $this->call('db:seed', ['--class' => 'LaravueUsersTableSeeder']);
         $this->call('db:seed', ['--class' => 'LaravueMenusSeeder']);
