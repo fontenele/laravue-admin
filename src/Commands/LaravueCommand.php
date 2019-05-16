@@ -31,7 +31,7 @@ class LaravueCommand extends Command
 
         $this->info('Publishing all files ...');
         $this->call('vendor:publish', ['--provider' => 'Fontenele\Laravue\Providers\LaravueServiceProvider', '--force' => true]);
-//        $this->call('vendor:publish', ['--provider' => 'Spatie\Activitylog\ActivitylogServiceProvider', '--tag' => 'migrations']);
+        $this->call('vendor:publish', ['--provider' => 'Spatie\Activitylog\ActivitylogServiceProvider', '--tag' => 'migrations']);
         if (!File::exists(base_path('.babelrc'))) {
             File::put(base_path('.babelrc'), File::get(__DIR__ . '/../../.babelrc'));
         }
@@ -41,17 +41,13 @@ class LaravueCommand extends Command
         $this->info("Dumping the composer autoload");
         (new Process('composer dump-autoload'))->run();
 
-//        $this->changeBackend();
-//        $this->changeFrontend();
-//        $this->changeRoutes();
+        $this->changeBackend();
+        $this->changeFrontend();
+        $this->changeRoutes();
 
         $this->call('db:seed', ['--class' => 'LaravueRolesTableSeeder']);
         $this->call('db:seed', ['--class' => 'LaravueUsersTableSeeder']);
         $this->call('db:seed', ['--class' => 'LaravueMenusSeeder']);
-
-//        dd($startBaseRouteLine, $endBaseRouteLine, $reflectRoute);
-//        dd(strpos($reflectRoute, "Route::get('/'"));
-
     }
 
     protected function changeBackend(): void
