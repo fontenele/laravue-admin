@@ -40,16 +40,12 @@ class LaravueCommand extends Command
 
         $this->migrate();
 
-        $this->info("Dumping the composer autoload");
-        (new Process('composer dump-autoload'))->run();
-
         $this->changeBackend();
         $this->changeFrontend();
         $this->changeRoutes();
 
-        $this->call('db:seed', ['--class' => 'LaravueRolesSeeder']);
-        $this->call('db:seed', ['--class' => 'LaravueMenusSeeder']);
-        $this->call('db:seed', ['--class' => 'LaravueUsersSeeder']);
+        $this->info("Dumping the composer autoload");
+        (new Process('composer dump-autoload'))->run();
     }
 
     protected function changeBackend(): void

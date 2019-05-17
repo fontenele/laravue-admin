@@ -3,6 +3,7 @@
 namespace Fontenele\Laravue\Providers;
 
 use Fontenele\Laravue\Commands\LaravueCommand;
+use Fontenele\Laravue\Commands\LaravueSeedCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravueServiceProvider extends ServiceProvider
@@ -10,6 +11,7 @@ class LaravueServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands(LaravueCommand::class);
+        $this->commands(LaravueSeedCommand::class);
     }
 
     public function boot()
