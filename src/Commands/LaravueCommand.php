@@ -29,6 +29,9 @@ class LaravueCommand extends Command
     {
         $this->migrate();
 
+        $this->info("Dumping the composer autoload");
+        (new Process('composer dump-autoload'))->run();
+
         $this->info('Publishing all files ...');
         $this->call('vendor:publish', ['--provider' => 'Fontenele\Laravue\Providers\LaravueServiceProvider', '--force' => true]);
         if (!File::exists(base_path('.babelrc'))) {
@@ -44,12 +47,9 @@ class LaravueCommand extends Command
         $this->changeFrontend();
         $this->changeRoutes();
 
-        $this->info("Dumping the composer autoload");
-        (new Process('composer dump-autoload'))->run();
-
-        $this->call('db:seed', ['--class' => 'LaravueRolesTableSeeder']);
-        $this->call('db:seed', ['--class' => 'LaravueUsersTableSeeder']);
+        $this->call('db:seed', ['--class' => 'LaravueRolesSeeder']);
         $this->call('db:seed', ['--class' => 'LaravueMenusSeeder']);
+        $this->call('db:seed', ['--class' => 'LaravueUsersSeeder']);
     }
 
     protected function changeBackend(): void
