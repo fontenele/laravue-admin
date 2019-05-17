@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LaravueRolesTableSeeder extends Seeder
+class LaravueRolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.

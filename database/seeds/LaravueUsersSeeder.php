@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LaravueUsersTableSeeder extends Seeder
+class LaravueUsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
