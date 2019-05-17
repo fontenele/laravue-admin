@@ -126,6 +126,7 @@ class LaravueCommand extends Command
         File::put(base_path('resources/js/app.js'), File::get(__DIR__ . '/../../resources/js/app.js'));
         File::put(base_path('resources/js/bootstrap.js'), File::get(__DIR__ . '/../../resources/js/bootstrap.js'));
         File::put(base_path('resources/sass/app.scss'), File::get(__DIR__ . '/../../resources/sass/app.scss'));
+        File::copyDirectory(__DIR__ . '/../../resources/js/components/', resource_path('js/components/'));
 
         $this->info('Building frontend ...');
         (new Process('yarn dev'))->run();
