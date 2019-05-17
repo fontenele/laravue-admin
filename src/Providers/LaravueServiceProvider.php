@@ -38,7 +38,7 @@ class LaravueServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/js/' => base_path('resources/js'),
         ], 'js');
         $this->publishes([
-            __DIR__ . '/../../resources/js/' => base_path('resources/js'),
+            __DIR__ . '/../../resources/js/components/' => base_path('resources/js/components'),
         ]);
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'laravue');
     }
